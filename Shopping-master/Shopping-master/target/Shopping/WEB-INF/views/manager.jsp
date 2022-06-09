@@ -1,7 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="cp" value="${pageContext.request.contextPath}"/>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 38de3e27c462f6df2540327345f3deac1ccfe4d2
 <html>
 <head>
     <title>Title</title>
