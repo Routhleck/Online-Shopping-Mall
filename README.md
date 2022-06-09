@@ -25,4 +25,5 @@ JAVA Spring + SpringMVC + Hibernate + MYSQL
 
    业务层
 
-5. 
+entity作为实体类；DAO使用entity和bean进行数据访问与数据库进行数据的传输；service调用DAO；controller调用service;
+
