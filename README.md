@@ -3,4 +3,4 @@
 
 线上商城
 
-JAVA + SERVLET + MYSQL
+JAVA Spring + SpringMVC + Hibernate + MYSQL
