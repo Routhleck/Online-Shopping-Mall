@@ -2,13 +2,7 @@
 <%--suppress ALL --%>
 <%--suppress JSAnnotator --%>
 <%--suppress ALL --%>
-<%--
-  Created by IntelliJ IDEA.
-  User: liu
-  Date: 2018/12/22
-  Time: 23:50
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="cp" value="${pageContext.request.contextPath}"/>
@@ -153,7 +147,7 @@
         for(var i=0;i<allProduct.length;i++){
             var product=allProduct[i];
             product.img;
-            var imgURL = "${cp}/img/"+product.img;
+            var imgURL = "${cp}/img/"+product.id+".jpg";
 
             html+='<div class="col-sm-4 col-md-4 pd-5">'+
                 '<div class="boxes">'+

@@ -147,7 +147,7 @@
         for(var i=0;i<allProduct.length;i++){
             var product=allProduct[i];
             product.img;
-            var imgURL = "${cp}/img/"+product.img;
+            var imgURL = "${cp}/img/"+product.id+".jpg";
 
             html+='<div class="col-sm-4 col-md-4 pd-5">'+
                 '<div class="boxes">'+

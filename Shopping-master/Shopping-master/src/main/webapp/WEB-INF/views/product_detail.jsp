@@ -38,7 +38,7 @@
         <div class="row">
             <div class="col-sm-1 col-md-1"></div>
             <div class="col-sm-5 col-md-5">
-                <img class="detail-img" src="${cp}/img/${productDetail.img}">
+                <img class="detail-img" src="${cp}/img/${productDetail.id}.jpg">
             </div>
             <div class="col-sm-5 col-md-5 detail-x">
                 <table class="table table-striped">

@@ -103,7 +103,7 @@
           for(var i=0;i<allProduct.length;i++){
               var html = "";
               var product=allProduct[i];
-              var imgURL = "${cp}/img/"+product.img;
+              var imgURL = "${cp}/img/"+product.id+".jpg";
 			  html += '<div class="col-sm-4 col-md-4" >'+
 					  '<div class="boxes pointer" onclick="productDetail('+allProduct[i].id+')">'+
 					  '<div class="big bigimg">'+
