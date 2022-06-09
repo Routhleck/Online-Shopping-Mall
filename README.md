@@ -5,6 +5,24 @@
 
 JAVA Spring + SpringMVC + Hibernate + MYSQL
 
-层级分类
+后端设计，层次分类
 
-1. 
+基本流程是Spring框架，(ViewWeb)表示层调用控制层(Controller)，控制层调用业务层(Service)，业务层调用数据访问层(Dao)。
+
+1.  bean
+
+   数据软件组件模型
+
+2. controller
+
+   控制层
+
+3. dao
+
+   数据访问层
+
+4. service
+
+   业务层
+
+5. 
