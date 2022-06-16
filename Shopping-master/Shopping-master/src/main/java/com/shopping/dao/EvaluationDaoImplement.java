@@ -8,14 +8,14 @@ import org.springframework.stereotype.Repository;
 import javax.annotation.Resource;
 import java.util.List;
 
-
 @Repository
 public class EvaluationDaoImplement implements EvaluationDao {
 
-    @Resource
+    //SessionFactory在Hibernate中实际上起到了一个缓冲区的作用
+    // 他缓冲了HIbernate自动生成SQL语句和其他的映射数据，还缓冲了一些将来有可能重复利用的数据
     private SessionFactory sessionFactory;
 
-    @Override
+    //
     public Evaluation getEvaluation(int userId, int productId, String time) {
         String hql = "from Evaluation where userId=? and productId=? and time=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -30,7 +30,7 @@ public class EvaluationDaoImplement implements EvaluationDao {
         sessionFactory.getCurrentSession().save(evaluation);
     }
 
-    @Override
+    //删除评价
     public boolean deleteEvaluation(int userId, int productId, String time) {
         String hql = "delete Evaluation where userId=? and productId=? and time=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -40,7 +40,7 @@ public class EvaluationDaoImplement implements EvaluationDao {
         return query.executeUpdate() > 0;
     }
 
-    @Override
+    //更新评价
     public boolean updateEvaluation(Evaluation evaluation) {
         String hql = "update Evaluation set content=? where userId=? and productId=? and time=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -51,7 +51,7 @@ public class EvaluationDaoImplement implements EvaluationDao {
         return query.executeUpdate() > 0;
     }
 
-    @Override
+    //列出某一商品的评价
     public List<Evaluation> getProductEvaluation(int productId) {
         String hql = "from Evaluation where productId=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -59,7 +59,7 @@ public class EvaluationDaoImplement implements EvaluationDao {
         return  query.list();
     }
 
-    @Override
+    //删除用户的评价
     public boolean deleteEvaluationByUser(int userId) {
         String hql = "delete Evaluation where userId=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -67,7 +67,7 @@ public class EvaluationDaoImplement implements EvaluationDao {
         return query.executeUpdate() > 0;
     }
 
-    @Override
+    //删除商品的评价
     public boolean deleteEvaluationByProduct(int productId) {
         System.out.println("deleteEvaluationByProduct productId "+productId);
         String hql = "delete Evaluation where productId=?";

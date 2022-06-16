@@ -6,8 +6,10 @@ import com.shopping.bean.Image;
 import java.io.*;
 import java.sql.*;
 
+//图片DAO
 public class ImageDAO {
     InputStream in;
+    //连接数据库
     public ImageDAO() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -21,10 +23,8 @@ public class ImageDAO {
                 "root");
     }
 
-    /**
-     * 向数据库中插入一张图片
-     * @param image 图片名
-     */
+//向数据库中插入一张图片
+
     public void addImage(Image image) {
         String sql = "insert into image values(?,?,?)";
         try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
@@ -38,11 +38,7 @@ public class ImageDAO {
         }
     }
 
-    /**
-     * 从数据库读取商品图片
-     * @param good_name 商品名称
-     * @return 商品图片地址
-     */
+    //从数据库读取商品图片
     public InputStream getImage(String good_name){
         String sql = "select * from image where good_name = ?";
         Image image = null;
@@ -51,7 +47,7 @@ public class ImageDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next())
-            in = rs.getBinaryStream("photo");
+                in = rs.getBinaryStream("photo");
         } catch (Exception e) {
             e.printStackTrace();
         }
