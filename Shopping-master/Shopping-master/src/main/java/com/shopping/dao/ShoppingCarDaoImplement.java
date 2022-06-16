@@ -14,6 +14,7 @@ public class ShoppingCarDaoImplement implements ShoppingCarDao {
     private SessionFactory sessionFactory;
 
     @Override
+    //获取购物车
     public ShoppingCar getShoppingCar(int userId, int productId) {
         String hql = "from ShoppingCar where userId=? and productId=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -23,11 +24,13 @@ public class ShoppingCarDaoImplement implements ShoppingCarDao {
     }
 
     @Override
+    //添加购物车
     public void addShoppingCar(ShoppingCar shoppingCar) {
         sessionFactory.getCurrentSession().save(shoppingCar);
     }
 
     @Override
+    //删除购物车
     public boolean deleteShoppingCar(int userId, int productId) {
         String hql = "delete ShoppingCar where userId=? and productId=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -37,6 +40,7 @@ public class ShoppingCarDaoImplement implements ShoppingCarDao {
     }
 
     @Override
+    //更新购物车
     public boolean updateShoppingCar(ShoppingCar shoppingCar) {
         String hql = "update ShoppingCar set productPrice=?,counts=? where userId=? and productId=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -48,6 +52,7 @@ public class ShoppingCarDaoImplement implements ShoppingCarDao {
     }
 
     @Override
+    //通过用户id获取购物车
     public List<ShoppingCar> getShoppingCars(int userId) {
         String hql = "from ShoppingCar where userId=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -56,6 +61,7 @@ public class ShoppingCarDaoImplement implements ShoppingCarDao {
     }
 
     @Override
+    //删除用户时删除购物车
     public boolean deleteShoppingCarByUser(int userId) {
         String hql = "delete ShoppingCar where userId=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -64,6 +70,7 @@ public class ShoppingCarDaoImplement implements ShoppingCarDao {
     }
 
     @Override
+    //删除商品时删除购物车
     public boolean deleteShoppingCarByProduct(int productId) {
         System.out.println("deleteShoppingCarByProduct productId is "+productId);
         String hql = "delete ShoppingCar where productId=?";
