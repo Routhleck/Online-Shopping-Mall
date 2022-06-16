@@ -132,10 +132,10 @@
         var receiveHTMLTemp = "";
         var allHTMLTemp = "";
         var bossId=${currentUser.id};
-        alert("在订单中欧冠");
+        alert("订单加载");
         for(var i=0;i<allShoppingRecords.length;i++) {
             if(allShoppingRecords[i].shopId==bossId){
-                alert("所有订单的");
+                alert("所有订单");
             var user = getUserById(allShoppingRecords[i].userId);
             var product = getProductById(allShoppingRecords[i].productId);
             allHTMLTemp += '<tr>' +
