@@ -132,10 +132,7 @@
         var receiveHTMLTemp = "";
         var allHTMLTemp = "";
         var bossId=${currentUser.id};
-        alert("在订单中欧冠");
         for(var i=0;i<allShoppingRecords.length;i++) {
-            if(allShoppingRecords[i].shopId==bossId){
-                alert("所有订单的");
             var user = getUserById(allShoppingRecords[i].userId);
             var product = getProductById(allShoppingRecords[i].productId);
             allHTMLTemp += '<tr>' +
@@ -261,7 +258,6 @@
         });
 
         shoppingRecordProducts = eval("("+shoppingRecordProducts+")");
-        alert("在getAllShoppingRecords之后")
         return shoppingRecordProducts;
     }
 
