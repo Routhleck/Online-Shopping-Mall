@@ -5,8 +5,9 @@ import com.shopping.bean.Goods;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+//商品DAO
 public class GoodsDAO {
+    //连接数据库
     public GoodsDAO() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -33,10 +34,8 @@ public class GoodsDAO {
         }
     }
 
-    /**
-     * 获取所有商品
-     * @return
-     */
+// 获取所有商品
+
     public List<Goods> seleteAll() {
         List<Goods> goodss = new ArrayList<Goods>();
         String sql = "select * from goods";
@@ -64,6 +63,7 @@ public class GoodsDAO {
         }
         return goodss;
     }
+    //查询某一商家的商品
     public List<Goods> seleteShopGoods(String owner) {
         List<Goods> goodss = new ArrayList<Goods>();
         //String sql = "select * from goods owner=?";
@@ -89,10 +89,8 @@ public class GoodsDAO {
         return goodss;
     }
 
-    /**
-     * 删除商品
-     * @param name
-     */
+//删除商品
+
     public void deleteGoods(String name) {
         try (Connection c=getConnection();
              PreparedStatement ps=c.prepareStatement("delete from goods where name=?");){
@@ -103,10 +101,8 @@ public class GoodsDAO {
         }
     }
 
-    /**
-     * 删除商家的所有商品
-     * @param owner
-     */
+//删除商家的所有商品
+
     public void deleteOwnerGoods(String owner) {
         try (Connection c=getConnection();
              PreparedStatement ps=c.prepareStatement("delete from goods where owner=?");){
@@ -117,11 +113,8 @@ public class GoodsDAO {
         }
     }
 
-    /**
-     * 模糊查找商品
-     * @param temp_name
-     * @return
-     */
+//模糊查找商品
+
     public List<Goods> seleteGoods(String temp_name) {
         List<Goods> goodss = new ArrayList<Goods>();
         //String sql = "select * from goods owner=?";

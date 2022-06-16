@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdminContentDAO {
+    //连接数据库
     public AdminContentDAO() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -20,6 +21,7 @@ public class AdminContentDAO {
                 "root",
                 "root");
     }
+
     public void addContent(AdminContent adminContent) {
         String sql = "insert into admincontent values(?)";
         try (Connection c = getConnection();
@@ -30,6 +32,7 @@ public class AdminContentDAO {
             e.printStackTrace();
         }
     }
+
     public List<AdminContent> seleteAll() {
         List<AdminContent> contents = new ArrayList<AdminContent>();
         String sql = "select * from admincontent";
