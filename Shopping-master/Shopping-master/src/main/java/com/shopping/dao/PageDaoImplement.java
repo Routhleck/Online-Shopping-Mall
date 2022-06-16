@@ -14,7 +14,7 @@ public class PageDaoImplement implements PageDao {
     private SessionFactory sessionFactory;
 
     @Override
-    public void addPage(Page page) {
-        sessionFactory.getCurrentSession().save(page);
+    //getCurrentSession().save(page)获得Session并且将page对象保存
+    public void addPage(Page page) {sessionFactory.getCurrentSession().save(page);
     }
 }

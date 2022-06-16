@@ -3,6 +3,7 @@ package com.shopping.dao;
 import java.sql.*;
 
 public class PostStatusDAO {
+    //连接到数据库
     public PostStatusDAO() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -15,8 +16,11 @@ public class PostStatusDAO {
                 "root",
                 "root");
     }
+    //得到poststatu
     public int selectStatus() {
         int status=0;
+        //在某些情况下，如果明知道查询结果只有一个，SQL语句中使用LIMIT 1会提高查询效率
+        //这里使用limit是因为每个POST的status只有一个
         String sql = "select status from poststatus limit 1";
         try (Connection c = getConnection();
              PreparedStatement ps = c.prepareStatement(sql);) {
@@ -27,6 +31,7 @@ public class PostStatusDAO {
         }
         return status;
     }
+    //更新状态
     public void updateStatus(int num) {
         String sql = "update poststatus set status= ? where id=1";
         try (Connection c = getConnection();

@@ -6,7 +6,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+//这个是送货的DAO设定
 public class PostDAO {
+    //连接到数据库
     public PostDAO() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -19,6 +21,7 @@ public class PostDAO {
                 "root",
                 "root");
     }
+    //添加Post对象
     public void addPost(Post post) {
         String sql = "insert into post values(?,?)";
         try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
