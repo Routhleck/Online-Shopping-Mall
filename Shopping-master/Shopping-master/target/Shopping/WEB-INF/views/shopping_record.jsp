@@ -129,9 +129,6 @@
         var receiveHTMLTemp = "";
         var allHTMLTemp = "";
         for(var i=0;i<allShoppingRecords.length;i++){
-            alert("用户买的商品id为"+allShoppingRecords[i].productId);
-        }
-        for(var i=0;i<allShoppingRecords.length;i++){
 
             var product = getProductById(allShoppingRecords[i].productId);
             //var id=allShoppingRecords[i].userId;
@@ -255,13 +252,6 @@
         });
 
         shoppingRecordProducts = eval("("+shoppingRecordProducts+")");
-        for(var i=0;i<shoppingRecordProducts.length;i++){
-            alert("在getShoppingRecords从RecordsController返回之后ProductId productId,userId(买家),shopId(卖家)是：" +
-                " is "+shoppingRecordProducts[i].productId+" "+shoppingRecordProducts[i].userId+" "
-                +shoppingRecordProducts[i].shopId+" "+shoppingRecordProducts[i].counts+" "+shoppingRecordProducts[i].productPrice+" "
-                +shoppingRecordProducts[i].orderStatus+" "+shoppingRecordProducts[i].time);
-
-        }
 
         return shoppingRecordProducts;
     }

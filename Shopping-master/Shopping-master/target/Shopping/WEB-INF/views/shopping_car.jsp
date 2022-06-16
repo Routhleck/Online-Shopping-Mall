@@ -332,7 +332,6 @@ function addCount(id) {
         for(var i=0;i<productsId.length;i++){
             var product={};
             product=getProductById(productsId[i]);
-            alert("bossId is addToShoppingRecordsPre"+product.bossId);
             addToShoppingRecords(productsId[i],productsCounts[i],product.bossId);
         }
         layer.confirm('前往订单状态？', {icon: 1, title:'购买成功',btn:['前往订单','继续购买']},
@@ -348,7 +347,6 @@ function addCount(id) {
     function addToShoppingRecords(productId,productCounts,bossId) {
         judgeIsLogin();
         var shoppingRecord = {};
-        alert("bossId is addToShoppingRecords"+bossId);
         var shopId=bossId;
         shoppingRecord.userId = ${currentUser.id};
         shoppingRecord.productId = productId;

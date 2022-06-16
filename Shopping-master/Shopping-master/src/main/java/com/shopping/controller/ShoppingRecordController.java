@@ -85,7 +85,7 @@ public class ShoppingRecordController {
 
     @RequestMapping(value = "/getShoppingRecords",method = RequestMethod.POST)
     @ResponseBody
-    public Map<String,Object> getShoppingRecords(int userId){
+    public Map<String,Object> getShoppingRecords    (int userId){
         List<ShoppingRecord> shoppingRecordList = shoppingRecordService.getShoppingRecords(userId);
         shoppingRecordList.forEach(e->{
             System.out.println("在Controller中的productId,userId(买家),shopId(卖家)是："+e.getProductId()+"  "
