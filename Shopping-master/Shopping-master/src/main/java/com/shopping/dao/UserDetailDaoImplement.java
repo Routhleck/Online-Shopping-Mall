@@ -16,6 +16,7 @@ public class UserDetailDaoImplement implements UserDetailDao{
 
     @Override
     public UserDetail getUserDetail(int id) {
+        //获取拥护详细信息
         String hql = "from UserDetail where id=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter(0, id);
@@ -24,11 +25,13 @@ public class UserDetailDaoImplement implements UserDetailDao{
 
     @Override
     public void addUserDetail(UserDetail userDetail) {
+        //添加用户详细信息
         sessionFactory.getCurrentSession().save(userDetail);
     }
 
     @Override
     public boolean deleteUserDetail(int id) {
+        //删除用户详细信息
         String hql = "delete UserDetail where id=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter(0, id);
@@ -37,6 +40,7 @@ public class UserDetailDaoImplement implements UserDetailDao{
 
     @Override
     public boolean updateUserDetail(UserDetail userDetail) {
+        //更新用户详细信息
         String hql = "update UserDetail set password=?,phoneNumber=?,sex=?,birthday=?,postNumber=?,address=? where id=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter(0,userDetail.getPassword());
@@ -51,6 +55,7 @@ public class UserDetailDaoImplement implements UserDetailDao{
 
     @Override
     public List<UserDetail> getAllUserDetail() {
+        //获取所有用户详细信息列表
         String hql = "from UserDetail";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         return query.list();

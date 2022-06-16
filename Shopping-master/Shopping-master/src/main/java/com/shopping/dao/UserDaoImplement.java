@@ -18,6 +18,7 @@ public class UserDaoImplement implements UserDAO {
 
     @Override
     public User getUser(int id) {
+        //通过用户ID获取用户
         String hql = "from User where id=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter(0, id);
@@ -30,6 +31,7 @@ public class UserDaoImplement implements UserDAO {
 
     @Override
     public User getUser(String nameOrEmail) {
+        //通过姓名或邮箱获取拥护
         System.out.println("进入查询");
         String hql = "from User where email=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -45,11 +47,13 @@ public class UserDaoImplement implements UserDAO {
 
     @Override
     public void addUser(User user) {
+        //添加用户
         sessionFactory.getCurrentSession().save(user);
     }
 
     @Override
     public boolean deleteUser(int id) {
+        //删除用户
         String hql = "delete User where id=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter(0, id);
@@ -58,6 +62,7 @@ public class UserDaoImplement implements UserDAO {
 
     @Override
     public boolean updateUser(User user) {
+        //更新用户
         String hql = "update User set name = ?,email=?,nickName=? where id=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter(0,user.getName());
@@ -69,6 +74,7 @@ public class UserDaoImplement implements UserDAO {
 
     @Override
     public List<User> getAllUser() {
+        //获取用户列表
         String hql = "from User";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         return query.list();
@@ -76,6 +82,7 @@ public class UserDaoImplement implements UserDAO {
 
     @Override
     public boolean becomeVip(int userId) {
+        //将用户升级为VIP
         String hql = "update User set role=? where id=?";
 
         Query query = sessionFactory.getCurrentSession().createQuery(hql);

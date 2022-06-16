@@ -18,6 +18,7 @@ public class ShoppingRecordDaoImplement implements ShoppingRecordDao {
 
     @Override
     public ShoppingRecord getShoppingRecord(int userId, int productId,String time) {
+        //查询购物记录
         String hql = "from ShoppingRecord where userId=? and productId=? and time=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter(0, userId);
@@ -28,12 +29,14 @@ public class ShoppingRecordDaoImplement implements ShoppingRecordDao {
 
     @Override
     public void addShoppingRecord(ShoppingRecord shoppingRecord) {
+        //增加购物记录
         System.out.println("传到ShoppingRecordDao里的shopId is "+shoppingRecord.getShopId());
         sessionFactory.getCurrentSession().save(shoppingRecord);
     }
 
     @Override
     public boolean deleteShoppingRecord(int userId, int productId) {
+        //删除购物记录
         String hql = "delete ShoppingRecord where userId=? and productId=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter(0, userId);
@@ -43,6 +46,7 @@ public class ShoppingRecordDaoImplement implements ShoppingRecordDao {
 
     @Override
     public boolean updateShoppingRecord(ShoppingRecord shoppingRecord) {
+        //更新购物记录
         String hql = "update ShoppingReocrd set orderStatus=? where userId=? and productId=? and time=?";
         String sql = "update shopping_record set order_status="+shoppingRecord.getOrderStatus()+" where user_id="+shoppingRecord.getUserId()+" and product_id="+shoppingRecord.getProductId()+" and time='"+shoppingRecord.getTime()+"'";
 //        Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -56,6 +60,7 @@ public class ShoppingRecordDaoImplement implements ShoppingRecordDao {
 
     @Override
     public List<ShoppingRecord> getShoppingRecords(int userId) {
+        //通过用户ID获取购物记录
         String hql = "from ShoppingRecord where userId=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter(0,userId);
@@ -73,6 +78,7 @@ public class ShoppingRecordDaoImplement implements ShoppingRecordDao {
 
     @Override
     public List<ShoppingRecord> getAllShoppingRecords() {
+        //获取全部购物记录
         String hql = "from ShoppingRecord ";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         List<ShoppingRecord> records=new ArrayList<>();
@@ -86,6 +92,7 @@ public class ShoppingRecordDaoImplement implements ShoppingRecordDao {
 
     @Override
     public List<ShoppingRecord> getShoppingRecordsByOrderStatus(int orderStatus) {
+        //通过订单状态获取购物记录
         String hql = "from ShoppingRecord where orderStatus=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter(0,orderStatus);
@@ -94,6 +101,7 @@ public class ShoppingRecordDaoImplement implements ShoppingRecordDao {
 
     @Override
     public boolean getUserProductRecord(int userId,int productId) {
+        //指定用户和购物ID获取购物记录
         String hql = "from ShoppingRecord where userId=? and productId=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter(0,userId);
@@ -103,6 +111,7 @@ public class ShoppingRecordDaoImplement implements ShoppingRecordDao {
 
     @Override
     public boolean deleteShoppingRecordByUser(int userId) {
+        //指定用户ID删除购物记录
         String hql = "delete ShoppingRecord where userId=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter(0, userId);
@@ -111,6 +120,7 @@ public class ShoppingRecordDaoImplement implements ShoppingRecordDao {
 
     @Override
     public boolean deleteShoppingRecordByProductId(int productId) {
+        //通过产品ID删除购物记录
         System.out.println("deleteShoppingRecordByProductId id"+productId);
         String hql = "delete ShoppingRecord where productId=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
