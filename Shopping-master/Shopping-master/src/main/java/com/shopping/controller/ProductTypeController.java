@@ -18,6 +18,7 @@ public class ProductTypeController {
    private ProductTypeService productTypeService;
     @RequestMapping(value = "/addType", method = RequestMethod.POST)
     @ResponseBody
+    //添加类别
     public Map<String, Object> addType(String type) {
         String result ="fail";
         ProductType productType=new ProductType();
@@ -30,6 +31,7 @@ public class ProductTypeController {
 
     @RequestMapping(value = "/getAllTypes",method = RequestMethod.POST)
     @ResponseBody
+    //获取所有类别
     public Map<String,Object> getAllTypes(){
         List<ProductType> productTypeList = new ArrayList<>();
         productTypeList = productTypeService.getAllProductTypes();

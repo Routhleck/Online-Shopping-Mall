@@ -29,6 +29,7 @@ public class ProductController {
 
     @RequestMapping(value = "/getAllProducts")
     @ResponseBody
+    //获取所有商品
     public Map<String,Object> getAllProducts(){
         List<Product> productList = new ArrayList<>();
         productList = productService.getAllProduct();
@@ -50,6 +51,7 @@ public class ProductController {
 
     @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
     @ResponseBody
+    //添加商品
     public Map<String, Object> addProduct(String img,String name,String description,String keyWord,int price,int counts,int type,int bossId) {
         System.out.println("添加了商品："+name);
         String result ="fail";
@@ -73,6 +75,7 @@ public class ProductController {
 
     @RequestMapping(value = "/productDetail", method = RequestMethod.POST)
     @ResponseBody
+    //商品信息
     public Map<String, Object> productDetail(int id, HttpSession httpSession) {
         System.out.println("I am here!"+id);
         Product product = productService.getProduct(id);
@@ -90,6 +93,7 @@ public class ProductController {
 
     @RequestMapping(value = "/searchPre", method = RequestMethod.POST)
     @ResponseBody
+    //关键词搜索商品
     public Map<String,Object> searchPre(String searchKeyWord,HttpSession httpSession) {
         httpSession.setAttribute("searchKeyWord",searchKeyWord);
         Map<String,Object> resultMap = new HashMap<String,Object>();
@@ -117,6 +121,7 @@ public class ProductController {
 
     @RequestMapping(value = "/getProductById", method = RequestMethod.POST)
     @ResponseBody
+    //通过商品id搜索商品
     public Map<String, Object> getProductById(int id) {
         Product product = productService.getProduct(id);
         System.out.println("在ProductCOntroller 里面 product is "+product.getName());
@@ -129,6 +134,7 @@ public class ProductController {
 
     @RequestMapping(value = "/getProductsByBoss", method = RequestMethod.POST)
     @ResponseBody
+    //通过商家看商品
     public Map<String, Object> getProductsByBoss(int bossId) {
 
       /*  List<Product> productList = new ArrayList<>();
@@ -148,6 +154,7 @@ public class ProductController {
 
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
     @ResponseBody
+    //保存图片
     public Map<String, Object> uploadFile(@RequestParam MultipartFile productImgUpload,String name, HttpServletRequest request) {
         String result = "fail";
         try{

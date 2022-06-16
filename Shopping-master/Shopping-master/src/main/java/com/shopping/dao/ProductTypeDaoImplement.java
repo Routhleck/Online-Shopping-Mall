@@ -15,6 +15,7 @@ public class ProductTypeDaoImplement implements ProductTypeDao {
 
 
     @Override
+    //获取商品类别
     public List<ProductType> getAllProductTypes() {
         String hql = "from ProductType";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -22,6 +23,7 @@ public class ProductTypeDaoImplement implements ProductTypeDao {
     }
 
     @Override
+    //增加商品类别
     public void addProductTypes(ProductType productType) {
         sessionFactory.getCurrentSession().save(productType);
     }

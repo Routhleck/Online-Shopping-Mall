@@ -15,9 +15,9 @@ public class ProductDaoImplement implements ProductDao {
     private SessionFactory sessionFactory;
 
     @Override
+    //通过商品id搜索
     public Product getProduct(int id) {
         String hql = "from Product where id=?";
-        System.out.println("现在在ProductDao里面啊啊啊啊啊");
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter(0, id);
         Product product=(Product) query.uniqueResult();
@@ -27,6 +27,7 @@ public class ProductDaoImplement implements ProductDao {
 
 
     @Override
+    //通过商品名搜索
     public Product getProduct(String name) {
         String hql = "from Product where name=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -35,11 +36,13 @@ public class ProductDaoImplement implements ProductDao {
     }
 
     @Override
+    //添加商品
     public void addProduct(Product product) {
         sessionFactory.getCurrentSession().save(product);
     }
 
     @Override
+    //删除商品
     public boolean deleteProduct(int id) {
         System.out.println("要删除的商品id是  "+id);
         String hql = "delete Product where id=?";
@@ -51,6 +54,7 @@ public class ProductDaoImplement implements ProductDao {
 
 
     @Override
+    //更细商品
     public boolean updateProduct(Product product) {
         String hql = "update Product set name=?,description=?,keyWord=?,price=?,counts=?,type=? where id=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -65,6 +69,7 @@ public class ProductDaoImplement implements ProductDao {
     }
 
     @Override
+    //通过关键词搜索
     public List<Product> getProductsByKeyWord(String searchKeyWord) {
         String queryKeyWord = "%";
         for(int i=0;i<searchKeyWord.length();i++){
@@ -79,6 +84,7 @@ public class ProductDaoImplement implements ProductDao {
     }
 
     @Override
+    //通过项目类别搜索
     public List<Product> getProductsByType(int type) {
         String hql = "from Product where type=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -87,6 +93,7 @@ public class ProductDaoImplement implements ProductDao {
     }
 
     @Override
+    //通过商家搜索
     public List<Product> getProductsByBoss(int bossId) {
         String hql = "from Product where bossId=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -96,6 +103,7 @@ public class ProductDaoImplement implements ProductDao {
 
 
     @Override
+    //获取所有商品
     public List<Product> getAllProduct() {
         String hql = "from Product";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);

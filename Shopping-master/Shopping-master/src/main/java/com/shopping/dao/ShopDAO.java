@@ -15,12 +15,12 @@ public class ShopDAO {
             e.printStackTrace();
         }
     }
-    public Connection getConnection() throws SQLException {
+    public Connection getConnection() throws SQLException {//连接数据库
         return DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/finaltest?characterEncoding=UTF-8&serverTimezone=GMT",
                 "root",
                 "root");
     }
-    public void addShop(Shop shop) {
+    public void addShop(Shop shop) {//增加商铺用户
         String sql = "insert into shop values(?,?)";
         try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
             ps.setString(1, shop.getAccount());
@@ -49,7 +49,7 @@ public class ShopDAO {
             return hasShop;
     }
 
-    public List<Shop> seleteAll() {
+    public List<Shop> seleteAll() {//所有商铺
         List<Shop> shops = new ArrayList<Shop>();
         String sql = "select * from shop";
         try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
@@ -67,7 +67,7 @@ public class ShopDAO {
         }
         return shops;
     }
-    public void deleteShop(String account) {
+    public void deleteShop(String account) {//删除商铺
         try (Connection c=getConnection();
              PreparedStatement ps=c.prepareStatement("delete from shop where account=?");){
             ps.setString(1,account);
